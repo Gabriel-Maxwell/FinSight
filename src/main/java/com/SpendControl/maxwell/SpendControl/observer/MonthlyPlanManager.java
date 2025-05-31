@@ -17,6 +17,10 @@ public class MonthlyPlanManager implements UserObserver{
 
     @Override
     public void updateSalary(Long userId, BigDecimal addValue) {
+        if (BigDecimal.ZERO.equals(addValue)) {
+            return;
+        }
+
         //localizar os Monthly plans relacionado ao user informado
         int month = LocalDate.now().getMonthValue();
         int year = LocalDate.now().getYear();

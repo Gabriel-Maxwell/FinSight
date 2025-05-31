@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Table(name="monthly_plan")
 public class MonthlyPlanEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

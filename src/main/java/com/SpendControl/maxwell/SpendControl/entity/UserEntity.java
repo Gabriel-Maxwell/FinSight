@@ -1,14 +1,15 @@
 package com.SpendControl.maxwell.SpendControl.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Builder
 @Table(name = "Users")
 public class UserEntity {
@@ -19,8 +20,8 @@ public class UserEntity {
     private String email;
     private String password;
     private BigDecimal salary;
-    @OneToMany(mappedBy = "user")
-    private List<MonthlyPlanEntity>  ownedPlans;
+    @OneToMany(mappedBy = "owner")
+    private List<MonthlyPlanEntity> ownedPlans;
     @OneToMany(mappedBy = "user")
     private List<FixedExpenseEntity> fixedExpenses;
 

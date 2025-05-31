@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name="month_clojure")
 public class MonthClosureEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

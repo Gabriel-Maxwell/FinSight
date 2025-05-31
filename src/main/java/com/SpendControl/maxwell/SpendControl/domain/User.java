@@ -5,18 +5,22 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @Builder
+@Data
 public class User {
     private Long id;
     private String name;
     private String email;
     private String password;
     private BigDecimal salary;
-    private List<UserObserver> observers = new ArrayList<>();
+    private List<UserObserver> observers;
+
+//    public User(List<UserObserver> observers) {
+//        this.observers = new ArrayList<>(observers);
+//    }
 
     public void setSalary(BigDecimal salary) {
         BigDecimal oldSalary = this.salary;
