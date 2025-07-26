@@ -3,14 +3,11 @@ package com.SpendControl.maxwell.SpendControl.domain;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class Transaction {
     private Long id;
     private Date date;

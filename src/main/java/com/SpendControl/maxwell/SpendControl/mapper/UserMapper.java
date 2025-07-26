@@ -15,6 +15,7 @@ public abstract class UserMapper {
                 .email(entity.getEmail())
                 .password(entity.getPassword())
                 .salary(entity.getSalary())
+                .profile(entity.getProfile())
                 .build();
     }
     public static List<User> toDomain(List<UserEntity> entities) {
@@ -41,6 +42,7 @@ public abstract class UserMapper {
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .salary(user.getSalary())
+                .profile(user.getProfile())
                 .build();
     }
 
@@ -51,6 +53,7 @@ public abstract class UserMapper {
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .salary(dto.getSalary())
+                .profile(dto.getProfile())
                 .build();
     }
 
@@ -61,6 +64,7 @@ public abstract class UserMapper {
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .salary(user.getSalary())
+                .profile(user.getProfile())
                 .build();
     }
 

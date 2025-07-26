@@ -1,9 +1,11 @@
 package com.SpendControl.maxwell.SpendControl.dto;
 
+import java.math.BigDecimal;
+
+import com.SpendControl.maxwell.SpendControl.enums.UserProfile;
+
 import lombok.Builder;
 import lombok.Data;
-
-import java.math.BigDecimal;
 
 
 @Data
@@ -14,4 +16,5 @@ public class UserDto {
     private String email;
     private String password;
     private BigDecimal salary;
+    private UserProfile profile;
 }

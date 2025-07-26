@@ -1,5 +1,6 @@
 package com.SpendControl.maxwell.SpendControl.domain;
 
+import com.SpendControl.maxwell.SpendControl.enums.UserProfile;
 import com.SpendControl.maxwell.SpendControl.observer.UserObserver;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,7 @@ public class User {
     private String email;
     private String password;
     private BigDecimal salary;
+    private UserProfile profile;
     private List<UserObserver> observers;
 
 //    public User(List<UserObserver> observers) {
