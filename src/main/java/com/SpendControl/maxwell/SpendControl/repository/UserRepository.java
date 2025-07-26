@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-    // Custom query methods can be defined here if needed
-    // For example, findByUsername(String username);
+    
 
     List<UserEntity> findByNameContainingIgnoreCase(String name);
     Optional<UserEntity> findByEmailIgnoreCase(String email);

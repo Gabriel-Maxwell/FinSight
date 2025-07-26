@@ -33,7 +33,7 @@ public class CategoryService {
     public CategoryDto updateCategory(Long id, CategoryDto categoryDto) {
         validateCategory(categoryDto);
         CategoryEntity entity = categoryRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada"));
+                .orElseThrow(() -> new IllegalArgumentException("category not found with ID: " + id));
         entity.setName(categoryDto.getName());
         CategoryEntity updated = categoryRepository.save(entity);
         return CategoryMapper.fromDomainToDto(CategoryMapper.toDomain(updated));

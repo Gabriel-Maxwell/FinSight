@@ -77,11 +77,9 @@ public class UserService implements UserDetailsService {
             throw new IllegalArgumentException("User salary cannot be null or less than or equal to zero");
         }
         if(userRepository.findByEmailIgnoreCase(user.getEmail()).isPresent()){
-            //todo elaborar mensagem padrao de erros
+
             throw new IllegalArgumentException("This email is already taken");
         }
-        //todo validated user profile 
-        //ajust the mappers too
     }
 
     @Transactional

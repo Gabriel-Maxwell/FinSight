@@ -21,11 +21,11 @@ public class MonthlyPlanManager implements UserObserver{
             return;
         }
 
-        //localizar os Monthly plans relacionado ao user informado
+        //locate the current and future monthly plans for the user
         int month = LocalDate.now().getMonthValue();
         int year = LocalDate.now().getYear();
         List<MonthlyPlanEntity> currentAndFuturePlans  = monthlyPlanRepository.findActivePlanByUserId(userId, month, year);
-        //Para cada plano, necessario atualizar o budget com o valor adicional
+        // for every plan found, update the budget
         if (!currentAndFuturePlans.isEmpty()) {
             for(MonthlyPlanEntity currentPlan: currentAndFuturePlans) {
                 // If user is owner, update plan budget to reflect new salary
