@@ -8,7 +8,7 @@ import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
-@Route("/login")
+@Route("login")
 public class LoginView extends VerticalLayout{
     private TextField userName;
     private PasswordField userPassword;
