@@ -41,16 +41,18 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**"),
-                    AntPathRequestMatcher.antMatcher("/auth/*")).permitAll()
+                    AntPathRequestMatcher.antMatcher("/auth/*"),
+                    AntPathRequestMatcher.antMatcher("/login")).permitAll()
                     
                 .anyRequest().authenticated()
             )
             .csrf(csrf -> csrf
                 .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**"),
-                    AntPathRequestMatcher.antMatcher("/auth/*"))
+                    AntPathRequestMatcher.antMatcher("/auth/*"),
+                    AntPathRequestMatcher.antMatcher("/login"))
             )
             .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-            .httpBasic(Customizer.withDefaults())
+            .httpBasic(httpBasic -> httpBasic.disable())
             .oauth2ResourceServer(conf -> conf.jwt(Customizer.withDefaults())
         );
         return http.build();
