@@ -7,8 +7,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @Route("login")
+@AnonymousAllowed
 public class LoginView extends VerticalLayout{
     private TextField userName;
     private PasswordField userPassword;
@@ -23,16 +25,15 @@ public class LoginView extends VerticalLayout{
         feedback.getStyle().set("color", "red");
         H1 title = new H1("FinSight - Login");
 
-        loginButton.addClickListener(e->login());
+        loginButton.addClickListener(e -> login());
 
-        add(title,userName,userPassword,loginButton,feedback);
+        add(title, userName, userPassword, loginButton, feedback);
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
         setSizeFull();
-
     }
 
-    private Object login() {
+    private void login() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'login'");
     }

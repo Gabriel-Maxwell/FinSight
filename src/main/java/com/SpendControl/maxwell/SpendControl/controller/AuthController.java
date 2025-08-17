@@ -14,7 +14,7 @@ import com.SpendControl.maxwell.SpendControl.service.AuthenticationService;
 import com.SpendControl.maxwell.SpendControl.service.UserService;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
     
     private final UserService userService;
@@ -28,7 +28,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> createUser(@RequestBody UserDto user) {
         UserDto userCreated = userService.createUser(user);
-        URI uri = URI.create("/user/" + userCreated.getId());
+        URI uri = URI.create("/api/user/" + userCreated.getId());
         return ResponseEntity.created(uri).body(userCreated);
 
     }

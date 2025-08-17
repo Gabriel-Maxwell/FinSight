@@ -14,7 +14,7 @@ import com.SpendControl.maxwell.SpendControl.dto.UserDto;
 import com.SpendControl.maxwell.SpendControl.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService userService;
@@ -22,8 +22,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-    
 
     @GetMapping
     @PreAuthorize("hasAuthority('SCOPE_ADMIN')")

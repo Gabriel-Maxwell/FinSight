@@ -1,5 +1,6 @@
 package com.SpendControl.maxwell.SpendControl.domain;
 
+import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.math.BigDecimal;

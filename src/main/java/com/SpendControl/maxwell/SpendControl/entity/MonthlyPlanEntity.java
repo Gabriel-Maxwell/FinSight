@@ -16,7 +16,9 @@ public class MonthlyPlanEntity {
     private Long id;
     @ManyToOne
     private UserEntity owner;
+    // @Column(name = "plan_month")  Para H2
     private int month;
+    // @Column(name = "plan_year")  Para H2
     private int year;
     private boolean closed;
     private Date creationDate;
