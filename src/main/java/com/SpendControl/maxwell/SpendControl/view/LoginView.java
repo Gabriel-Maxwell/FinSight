@@ -1,5 +1,11 @@
 package com.SpendControl.maxwell.SpendControl.view;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.SpendControl.maxwell.SpendControl.domain.User;
+import com.SpendControl.maxwell.SpendControl.service.AuthenticationService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
@@ -16,14 +22,16 @@ public class LoginView extends VerticalLayout{
     private PasswordField userPassword;
     private Button loginButton;
     private Span feedback;
-    
-    public LoginView() {
+    private final AuthenticationService authService;
+
+    public LoginView(AuthenticationService authService) {
         userName = new TextField("Username");
         userPassword = new PasswordField("Password");
         loginButton = new Button("Login");
         feedback = new Span();
         feedback.getStyle().set("color", "red");
         H1 title = new H1("FinSight - Login");
+        this.authService = authService;
 
         loginButton.addClickListener(e -> login());
 
@@ -34,8 +42,33 @@ public class LoginView extends VerticalLayout{
     }
 
     private void login() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'login'");
+        String username = userName.getValue();
+        String password = userPassword.getValue();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            feedback.setText("Please enter both username and password.");
+            return;
+        }
+
+        try {
+            // Here you would typically call a service to authenticate the user
+            // For demonstration, we will just simulate a successful login
+            // In a real application, replace this with actual authentication logic
+            User user = User.builder()
+                .email(username)
+                .password(password)
+                .build();
+            Authentication authentication = authService.authenticateApp(user);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            // Redirect to home or dashboard view
+            getUI().ifPresent(ui -> ui.navigate("home"));
+        } catch (AuthenticationException e) {
+            feedback.setText("Invalid username or password.");
+            feedback.getStyle().set("color", "red");
+        } catch (Exception e) {
+            feedback.setText("An error has ocorred, please try again later.");
+            feedback.getStyle().set("color", "red");
+        }
     }
 
 

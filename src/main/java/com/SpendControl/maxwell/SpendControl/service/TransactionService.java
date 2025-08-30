@@ -21,7 +21,6 @@ public class TransactionService {
 
 
     public TransactionDto createTransaction(TransactionDto transactionDto) {
-       
         return transactionDto;
     }    
 
@@ -41,7 +40,7 @@ public class TransactionService {
         if (transactionDto.getCategoryName() == null || transactionDto.getCategoryId() == null) {
             throw new IllegalArgumentException("Transaction category cannot be null or have a null ID");
         }
-       
+    
     }
 
     

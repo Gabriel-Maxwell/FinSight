@@ -21,4 +21,9 @@ public class AuthenticationService {
         Authentication auth = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
         return jwtService.generateToken(auth);
     }
+
+    public Authentication authenticateApp(User user) {
+        Authentication auth = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+        return auth;
+    }
 }

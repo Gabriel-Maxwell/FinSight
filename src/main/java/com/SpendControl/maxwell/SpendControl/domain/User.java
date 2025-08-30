@@ -23,6 +23,7 @@ public class User {
 //    public User(List<UserObserver> observers) {
 //        this.observers = new ArrayList<>(observers);
 //    }
+    
 
     public void setSalary(BigDecimal salary) {
         BigDecimal oldSalary = this.salary;
