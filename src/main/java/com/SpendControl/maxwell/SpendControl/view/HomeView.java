@@ -14,10 +14,10 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-import jakarta.annotation.security.RolesAllowed;
+import jakarta.annotation.security.PermitAll;
 
 @Route("home")
-@RolesAllowed("SCOPE_USER")
+@PermitAll
 public class HomeView extends AppLayout {
     public HomeView() {
         // Cabeçalho
@@ -72,7 +72,7 @@ public class HomeView extends AppLayout {
         configItems.setSpacing(false);
         configItems.setWidthFull();
 
-        Anchor categorias = new Anchor("configuracoes/categorias", "Categorias de despesas");
+        Anchor categorias = new Anchor("categories", "Categorias de despesas");
         categorias.getElement().getStyle().set("display", "block");
         categorias.getElement().getStyle().set("padding", "8px 12px");
 

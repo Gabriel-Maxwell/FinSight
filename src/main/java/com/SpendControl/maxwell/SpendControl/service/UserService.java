@@ -45,7 +45,7 @@ public class UserService implements UserDetailsService {
 
     public List<UserDto> findUsers(String name) {
         if(name == null || name.isBlank()){
-           return UserMapper.fromDomainToDto(UserMapper.toDomain(userRepository.findAll()));
+            return UserMapper.fromDomainToDto(UserMapper.toDomain(userRepository.findAll()));
         }
 
         return UserMapper.fromDomainToDto(UserMapper.toDomain(userRepository.findByNameContainingIgnoreCase(name)));
@@ -105,7 +105,8 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
         UserEntity user = optUser.get();
-        Set<GrantedAuthority> authorities = Set.of(new SimpleGrantedAuthority(user.getProfile().name()));
+        Set<GrantedAuthority> authorities = Set.of(new SimpleGrantedAuthority(
+            "ROLE_" + user.getProfile().name()));
         return org.springframework.security.core.userdetails.User.builder()
             .username(username)
             .password(user.getPassword())
